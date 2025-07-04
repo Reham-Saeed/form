@@ -1,0 +1,41 @@
+@if (formName.get(controlName)?.errors && (formName.get(controlName)?.touched || formName.get(controlName)?.dirty)) {
+  <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-200">
+    <ul class="m-0 space-y-1">
+      @if (formName.get(controlName)?.hasError('required')) {
+        <li>This field is required.</li>
+      }
+      @if (formName.get(controlName)?.hasError('minlength')) {
+        <li>Minimum length is {{ formName.get(controlName)?.getError('minlength')?.requiredLength }} characters.</li>
+      }
+      @if (formName.get(controlName)?.hasError('maxlength')) {
+        <li>Maximum length is {{ formName.get(controlName)?.getError('maxlength')?.requiredLength }} characters.</li>
+      }
+      @if (formName.get(controlName)?.hasError('email')) {
+        <li>Please enter a valid email address.</li>
+      }
+      @if (formName.get(controlName)?.hasError('pattern')) {
+        @if (controlName === 'password') {
+          <li>Password must contain at least one uppercase letter, one lowercase letter, one number, one special character, and be at least 8 characters long.</li>
+        }
+        @if (controlName === 'phone' || controlName === 'emergencyContactPhone') {
+          <li>Phone number must start with 010, 011, 012, or 015 and be 11 digits.</li>
+        }
+        @if (controlName === 'nationalId') {
+          <li>National ID must be 14 digits.</li>
+        }
+      }
+    </ul>
+  </div>
+}
+
+@else if (
+  formName.hasError('mismatch') &&
+  (formName.get(controlName)?.touched || formName.get(controlName)?.dirty) &&
+  controlName === 'rePassword'
+) {
+  <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-200">
+    <ul class="m-0">
+      <li>Passwords do not match.</li>
+    </ul>
+  </div>
+}

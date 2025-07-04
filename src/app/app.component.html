@@ -1,0 +1,148 @@
+<section class="py-10 bg-gray-100 min-h-screen flex items-center justify-center">
+  <div class="w-full max-w-4xl bg-white rounded-2xl shadow-xl p-10">
+    <form [formGroup]="register" (ngSubmit)="sendData()" class="space-y-8">
+      <h2 class="text-3xl font-bold text-center text-main mb-10">Patient Registration Form</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Name -->
+        <div>
+          <input formControlName="name" type="text" placeholder="Full Name" class="input-style " />
+          <alertError [formName]="register" controlName="name" />
+        </div>
+
+        <!-- Email -->
+        <div>
+          <input formControlName="email" type="email" placeholder="Email Address" class="input-style " />
+          <alertError [formName]="register" controlName="email" />
+        </div>
+
+        <!-- Password -->
+        <div>
+          <input formControlName="password" [type]="passwordType" placeholder="Password" class="input-style " />
+          <alertError [formName]="register" controlName="password" />
+        </div>
+
+        <!-- Confirm Password -->
+        <div>
+          <input formControlName="rePassword" [type]="passwordType" placeholder="Confirm Password" class="input-style " />
+          <alertError [formName]="register" controlName="rePassword" />
+        </div>
+
+        <!-- Phone -->
+        <div>
+          <input formControlName="phone" type="text" placeholder="Phone Number" class="input-style " />
+          <alertError [formName]="register" controlName="phone" />
+        </div>
+
+        <!-- National ID -->
+        <div>
+          <input formControlName="nationalId" type="text" placeholder="National ID" class="input-style " />
+          <alertError [formName]="register" controlName="nationalId" />
+        </div>
+
+        <!-- Address -->
+        <div>
+          <input formControlName="address" type="text" placeholder="Address" class="input-style " />
+          <alertError [formName]="register" controlName="address" />
+        </div>
+
+        <!-- Birth Date -->
+        <div>
+          <input formControlName="birthDate" type="date" class="input-style " />
+          <alertError [formName]="register" controlName="birthDate" />
+        </div>
+
+        <!-- Gender -->
+        <div>
+          <input formControlName="gender" type="text" placeholder="Gender" class="input-style " />
+          <alertError [formName]="register" controlName="gender" />
+        </div>
+
+        <!-- Marital Status -->
+        <div>
+          <input formControlName="maritalStatus" type="text" placeholder="Marital Status" class="input-style " />
+          <alertError [formName]="register" controlName="maritalStatus" />
+        </div>
+
+        <!-- Job -->
+        <div>
+          <input formControlName="job" type="text" placeholder="Job" class="input-style " />
+          <alertError [formName]="register" controlName="job" />
+        </div>
+
+        <!-- Education -->
+        <div>
+          <input formControlName="education" type="text" placeholder="Education" class="input-style " />
+          <alertError [formName]="register" controlName="education" />
+        </div>
+
+        <!-- Blood Type -->
+        <div>
+          <input formControlName="bloodType" type="text" placeholder="Blood Type" class="input-style " />
+          <alertError [formName]="register" controlName="bloodType" />
+        </div>
+
+        <!-- Emergency Contact Name -->
+        <div>
+          <input formControlName="emergencyContactName" type="text" placeholder="Emergency Contact Name" class="input-style " />
+          <alertError [formName]="register" controlName="emergencyContactName" />
+        </div>
+
+        <!-- Emergency Contact Phone -->
+        <div>
+          <input formControlName="emergencyContactPhone" type="text" placeholder="Emergency Contact Phone" class="input-style " />
+          <alertError [formName]="register" controlName="emergencyContactPhone" />
+        </div>
+
+        <!-- Allergies -->
+        <div>
+          <input formControlName="allergies" type="text" placeholder="Allergies" class="input-style " />
+          <alertError [formName]="register" controlName="allergies" />
+        </div>
+
+        <!-- Chronic Diseases -->
+        <div>
+          <input formControlName="chronicDiseases" type="text" placeholder="Chronic Diseases" class="input-style " />
+          <alertError [formName]="register" controlName="chronicDiseases" />
+        </div>
+
+        <!-- Insurance Provider -->
+        <div>
+          <input formControlName="insuranceProvider" type="text" placeholder="Insurance Provider" class="input-style " />
+          <alertError [formName]="register" controlName="insuranceProvider" />
+        </div>
+
+        <!-- Insurance Number -->
+        <div>
+          <input formControlName="insuranceNumber" type="text" placeholder="Insurance Number" class="input-style " />
+          <alertError [formName]="register" controlName="insuranceNumber" />
+        </div>
+
+        <!-- Notes -->
+        <div class="md:col-span-2">
+          <input formControlName="notes" type="text" placeholder="Notes" class="input-style " />
+          <alertError [formName]="register" controlName="notes" />
+        </div>
+      </div>
+
+      <!-- Success & Error Messages -->
+      @if(successMessage){
+      <div class="p-4 text-sm text-green-800 rounded-lg bg-green-200 text-center">
+        {{ successMessage }}
+      </div>
+      } @if(errorMessage){
+      <div class="p-4 text-sm text-red-800 rounded-lg bg-red-200 text-center">
+        {{ errorMessage }}
+      </div>
+      }
+
+      <!-- Submit Button -->
+      <button
+        class=" bg-sky-950 hover:bg-opacity-90 text-white py-3 rounded-lg font-medium transition disabled:opacity-50 w-full"
+        [disabled]="register.invalid"
+      >
+        Register
+      </button>
+    </form>
+  </div>
+</section>
